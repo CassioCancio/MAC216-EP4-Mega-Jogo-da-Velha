@@ -1,4 +1,5 @@
 from typing import List
+from Módulos.auxiliar import pos_ind
 
 '''
 - jogador_vencedor será o index do jogador na lista presente em partida
@@ -24,13 +25,13 @@ class Tabuleiro:
         if self.jogador_vencedor != None: return
 
         # verificar linhas
+        jogador_1 = 0
+        jogador_2 = 0
         for i in range(0, 3):
-            jogador_1 = 0
-            jogador_2 = 0
             for j in range(0, 3):
-                if self.posicoes[i*3+j] == 0:
+                if self.posicoes[pos_ind(i,j)] == 0:
                     jogador_1 += 1
-                elif self.posicoes[i*3+j] == 1:
+                elif self.posicoes[pos_ind(i,j)] == 1:
                     jogador_2 += 1
             if jogador_1 == 3:
                 self.jogador_vencedor = 0
@@ -40,13 +41,13 @@ class Tabuleiro:
         if self.jogador_vencedor != None: return
         
         # verificar colunas
+        jogador_1 = 0
+        jogador_2 = 0
         for j in range(0, 3):
-            jogador_1 = 0
-            jogador_2 = 0
             for i in range(0, 3):
-                if self.posicoes[j+3*i] == 0:
+                if self.posicoes[pos_ind(i,j)] == 0:
                     jogador_1 += 1
-                elif self.posicoes[j+3*i] == 1:
+                elif self.posicoes[pos_ind(i,j)] == 1:
                     jogador_2 += 1
             if jogador_1 == 3:
                 self.jogador_vencedor = 0
@@ -56,12 +57,12 @@ class Tabuleiro:
         if self.jogador_vencedor != None: return
 
         # verificar diagonal principal
+        jogador_1 = 0
+        jogador_2 = 0
         for i in range(0, 3):
-            jogador_1 = 0
-            jogador_2 = 0
-            if self.posicoes[i+i*3] == 0:
+            if self.posicoes[pos_ind(i,i)] == 0:
                 jogador_1 += 1
-            elif self.posicoes[i+i*3] == 1:
+            elif self.posicoes[pos_ind(i,i)] == 1:
                 jogador_2 += 1
             if jogador_1 == 3:
                 self.jogador_vencedor = 0
@@ -71,12 +72,12 @@ class Tabuleiro:
         if self.jogador_vencedor != None: return
         
         # verificar diagonal secundaria
+        jogador_1 = 0
+        jogador_2 = 0
         for i in range(0, 3):
-            jogador_1 = 0
-            jogador_2 = 0
-            if self.posicoes[3*i-i] == 0:
+            if self.posicoes[pos_ind(i,-i)] == 0:
                 jogador_1 += 1
-            elif self.posicoes[3*i-i] == 1:
+            elif self.posicoes[pos_ind(i,-i)] == 1:
                 jogador_2 += 1
             if jogador_1 == 3:
                 self.jogador_vencedor = 0
@@ -93,6 +94,10 @@ class Tabuleiro:
 
     def definir_posicao(self, linha, coluna, id):
         if self.verificar_posicao(linha, coluna):
-            self.posicoes[linha*3+coluna] = id
+            self.posicoes[pos_ind(linha,coluna)] = id
             return
         return False
+
+    def receber_posicao(self, linha, coluna):
+        return self.posicoes[pos_ind(linha,coluna)]
+    
