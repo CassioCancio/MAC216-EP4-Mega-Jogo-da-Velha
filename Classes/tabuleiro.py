@@ -1,5 +1,5 @@
 from typing import List
-from Módulos.auxiliar import pos_ind
+from Modulos.auxiliar import pos_ind
 
 '''
 - jogador_vencedor será o index do jogador na lista presente em partida
@@ -85,19 +85,19 @@ class Tabuleiro:
                 self.jogador_vencedor = 1
 
         # verificar se deu velha
-        cheio = True
         for i in range(9):
-            if self.posicoes[i] != None: 
-                cheio = False
-        if cheio and self.jogador_vencedor == None: 
-            self.jogador_vencedor = -1
+            if self.posicoes[i] == -1 or type(self.posicoes[i]).__name__ == "SubTabuleiro": 
+                return
+
+        if self.jogador_vencedor == None: 
+            self.jogador_vencedor = 2
 
     def definir_posicao(self, linha, coluna, id):
         if self.verificar_posicao(linha, coluna):
             self.posicoes[pos_ind(linha,coluna)] = id
+            self.verificar_vencedor()
             return
         return False
 
     def receber_posicao(self, linha, coluna):
         return self.posicoes[pos_ind(linha,coluna)]
-    

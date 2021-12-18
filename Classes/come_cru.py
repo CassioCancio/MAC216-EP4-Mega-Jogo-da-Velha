@@ -2,8 +2,8 @@ from jogador import Jogador
 from mega_tabuleiro import MegaTabuleiro
 
 class ComeCru(Jogador):
-    def __init__(self):
-        Jogador.__init__()
+    def __init__(self, nome, simbolo):
+        Jogador.__init__(self, nome, simbolo)
 
     def preparar_jogada(self, tabuleiro: MegaTabuleiro):
         # Encontrando primeiro tabuleiro livre

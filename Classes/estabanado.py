@@ -1,10 +1,10 @@
-import numpy as np
+from random import randint
 from jogador import Jogador
 from mega_tabuleiro import MegaTabuleiro
 
 class Estabanado(Jogador):
-    def __init__(self):
-        Jogador.__init__()
+    def __init__(self, nome, simbolo):
+        Jogador.__init__(self, nome, simbolo)
 
     def preparar_jogada(self, tabuleiro: MegaTabuleiro):
         # Sorteando tabuleiro livre
@@ -13,7 +13,7 @@ class Estabanado(Jogador):
         linha = None
         coluna = None
         for i in range(9):
-            indice = np.random.randint(low=i, high=9)
+            indice = randint(low=i, high=9)
             coluna = indice % 3
             linha = (indice - coluna) // 3
             if(tabuleiro.verificar_posicao(linha, coluna)):
@@ -27,7 +27,7 @@ class Estabanado(Jogador):
         linha_sub = None
         coluna_sub = None
         for i in range(9):
-            indice = np.random.randint(low=i, high=9)
+            indice = randint(low=i, high=9)
             coluna_sub = indice % 3
             linha_sub = (indice - coluna) // 3
             if(sub_tabuleiro.verificar_posicao(linha, coluna)):

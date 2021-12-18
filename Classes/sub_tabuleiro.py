@@ -1,5 +1,5 @@
 from tabuleiro import Tabuleiro
-from Módulos.auxiliar import pos_ind, ind_pos
+from Modulos.auxiliar import pos_ind, ind_pos
 
 class SubTabuleiro(Tabuleiro):
     def __init__(self):

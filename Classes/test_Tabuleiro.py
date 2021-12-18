@@ -1,5 +1,5 @@
 from mega_tabuleiro import MegaTabuleiro
-from Módulos.auxiliar import pos_ind, ind_pos
+from Modulos.auxiliar import pos_ind, ind_pos
 
 import pytest
 @pytest.fixture
