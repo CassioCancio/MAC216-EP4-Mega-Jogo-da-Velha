@@ -20,7 +20,6 @@ class MegaTabuleiro(Tabuleiro):
             sub_tab = self.receber_posicao(linha, coluna)
             sub_tab.definir_posicao(linha_sub, coluna_sub, id)
             id = sub_tab.receber_vencedor()
-            print(f"ola {id}")
             if id == None: return True
             else: 
                 self.definir_posicao(linha,coluna,id)

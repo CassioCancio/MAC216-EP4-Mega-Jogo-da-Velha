@@ -13,7 +13,7 @@ class Estabanado(Jogador):
         linha = None
         coluna = None
         for i in range(9):
-            indice = randint(low=i, high=9)
+            indice = randint(i, 8)
             coluna = indice % 3
             linha = (indice - coluna) // 3
             if(tabuleiro.verificar_posicao(linha, coluna)):
@@ -24,13 +24,13 @@ class Estabanado(Jogador):
         # Sorteando posição livre no tabuleiro
         posicao = None
         posicoes = [0, 1, 2, 3, 4, 5, 6, 7, 8]
-        linha_sub = None
-        coluna_sub = None
+        sub_linha = None
+        sub_coluna = None
         for i in range(9):
-            indice = randint(low=i, high=9)
-            coluna_sub = indice % 3
-            linha_sub = (indice - coluna) // 3
-            if(sub_tabuleiro.verificar_posicao(linha, coluna)):
+            indice = randint(i, 8)
+            sub_coluna = indice % 3
+            sub_linha = (indice - coluna) // 3
+            if(sub_tabuleiro.verificar_posicao(sub_coluna, sub_linha)):
                 break
             posicoes[i], posicoes[indice] = posicoes[indice], posicoes[i]
 
@@ -39,4 +39,4 @@ class Estabanado(Jogador):
             pass #toDo
 
         # Retorna o subtabuleiro escolhido e a posição escolhida para a jogada
-        return sub_tabuleiro, linha_sub, coluna_sub
+        return linha, coluna, sub_linha, sub_coluna

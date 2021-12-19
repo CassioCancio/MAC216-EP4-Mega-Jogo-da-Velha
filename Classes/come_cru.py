@@ -1,3 +1,4 @@
+from Modulos.auxiliar import ind_pos
 from jogador import Jogador
 from mega_tabuleiro import MegaTabuleiro
 
@@ -8,25 +9,27 @@ class ComeCru(Jogador):
     def preparar_jogada(self, tabuleiro: MegaTabuleiro):
         # Encontrando primeiro tabuleiro livre
         sub_tabuleiro = None
-        for sub in tabuleiro.posicoes:
-            if(sub.jogador_vencedor == None):
-                sub_tabuleiro = sub
+        id = 0
+        for i in range(9):
+            if(type(tabuleiro.posicoes[i]).__name__ == "SubTabuleiro" and tabuleiro.posicoes[i].jogador_vencedor == None):
+                id = i
                 break
         
         # Encontrando primeira posição do primeiro tabuleiro livre
         posicao = None
-        for pos in sub_tabuleiro.posicoes:
-            if(pos == -1):
-                posicao = pos
+        for i in range(9):
+            if(tabuleiro.posicoes[id].posicoes[i] == -1):
+                posicao = i
                 break
         
         # Cálculo da linha e coluna
-        coluna = posicao % 3
-        linha = (posicao - coluna) // 3
+        sub_linha, sub_coluna = ind_pos(posicao)
 
         # Se não achar posição disponível
         if sub_tabuleiro == None:
             pass #toDo
 
+        linha,coluna = ind_pos(id)
+
         # Retorna o subtabuleiro escolhido e a posição escolhida para a jogada
-        return sub_tabuleiro, linha, coluna
+        return linha, coluna, sub_linha, sub_coluna

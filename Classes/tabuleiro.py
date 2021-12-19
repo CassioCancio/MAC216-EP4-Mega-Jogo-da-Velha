@@ -25,9 +25,8 @@ class Tabuleiro:
         if self.jogador_vencedor != None: return
 
         # verificar linhas
-        jogador_1 = 0
-        jogador_2 = 0
         for i in range(0, 3):
+            jogador_1 = jogador_2 = 0
             for j in range(0, 3):
                 if self.posicoes[pos_ind(i,j)] == 0:
                     jogador_1 += 1
@@ -41,9 +40,8 @@ class Tabuleiro:
         if self.jogador_vencedor != None: return
         
         # verificar colunas
-        jogador_1 = 0
-        jogador_2 = 0
         for j in range(0, 3):
+            jogador_1 = jogador_2 = 0
             for i in range(0, 3):
                 if self.posicoes[pos_ind(i,j)] == 0:
                     jogador_1 += 1
