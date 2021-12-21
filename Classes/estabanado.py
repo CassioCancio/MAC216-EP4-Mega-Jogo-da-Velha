@@ -10,30 +10,25 @@ class Estabanado(Jogador):
 
     def preparar_jogada(self, tabuleiro: MegaTabuleiro):
         # Sorteando tabuleiro livre
-        sub_tabuleiro = None
-        sub_tabuleiros = [0,1,2,3,4,5,6,7,8]
-        linha = None
-        coluna = None
+        sub_indices = list(range(9))
+        linha = coluna = None
         for i in range(9):
-            indice = randint(i, 8)
-            linha, coluna = ind_pos(sub_tabuleiros[indice])
-            if(tabuleiro.ha_subtab(linha, coluna)):
-                sub_tabuleiro = tabuleiro.posicoes[sub_tabuleiros[indice]]
-                break
-            sub_tabuleiros[i], sub_tabuleiros[indice] = sub_tabuleiros[indice], sub_tabuleiros[i]
+            sorte = randint(i, 8)
+            linha,coluna = ind_pos(sub_indices[sorte])
+            if(tabuleiro.ha_subtab(linha, coluna)): break
+            sub_indices[i], sub_indices[sorte] = sub_indices[sorte], sub_indices[i]
+
+        # Guardar subtabuleiro sorteado
+        sub_tabuleiro = tabuleiro.receber_posicao(linha,coluna)
 
         # Sorteando posição livre no tabuleiro
-        posicao = None
-        posicoes = [0, 1, 2, 3, 4, 5, 6, 7, 8]
-        sub_linha = None
-        sub_coluna = None
+        pos_indices = list(range(9))
+        sub_linha = sub_coluna = None
         for i in range(9):
-            indice = randint(i, 8)
-            sub_linha, sub_coluna = ind_pos(posicoes[indice])
-            if(sub_tabuleiro.verificar_posicao(sub_linha, sub_coluna)):
-                break
-            posicoes[i], posicoes[indice] = posicoes[indice], posicoes[i]
+            sorte = randint(i, 8)
+            sub_linha, sub_coluna = ind_pos(pos_indices[sorte])
+            if(sub_tabuleiro.verificar_posicao(sub_linha, sub_coluna)): break
+            pos_indices[i], pos_indices[sorte] = pos_indices[sorte], pos_indices[i]
 
         # Retorna o subtabuleiro escolhido e a posição escolhida para a jogada
-        print(f"{linha} {coluna} {sub_linha} {sub_coluna}")
         return linha, coluna, sub_linha, sub_coluna

@@ -30,8 +30,7 @@ class Partida:
 
     def receber_vencedor(self):
         id = self.tabuleiro.receber_vencedor()
-        if id != None and 0 <= id <= 1: return self.jogadores[id]
-        return None
+        if id == 0 or id == 1: return self.jogadores[id]
 
     def receber_nome_jogador(self, id):
         return self.jogadores[id].receber_nome()
@@ -39,8 +38,17 @@ class Partida:
     def receber_simbolo_jogador(self, id):
         return self.jogadores[id].receber_simbolo()
 
+    def receber_jogador(self, id):
+        if 0 <= id <= 1: return self.jogadores[id]
+
     def fazer_jogada(self):
-        pass
+        atual = self.proximo_jogador()
+        print(f"É a vez de {self.receber_nome_jogador(atual)} ({self.receber_simbolo_jogador(atual)})")
+        linha,coluna,sub_linha,sub_coluna = self.receber_jogador(atual).preparar_jogada(self.tabuleiro)
+        while not(self.tabuleiro.definir_sub_posicao(linha, coluna, sub_linha, sub_coluna, atual)):
+            linha,coluna,sub_linha,sub_coluna = self.receber_jogador(atual).preparar_jogada(self.tabuleiro)
+        if self.tabuleiro.receber_vencedor() != None: self.finalizar()
+
 
     def finalizar(self):
         self.emAndamento = False
