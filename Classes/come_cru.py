@@ -1,6 +1,6 @@
-from Modulos.auxiliar import ind_pos
 from jogador import Jogador
 from mega_tabuleiro import MegaTabuleiro
+from Modulos.auxiliar import ind_pos
 
 class ComeCru(Jogador):
     def __init__(self, nome, simbolo):
@@ -24,10 +24,6 @@ class ComeCru(Jogador):
         
         # Cálculo da linha e coluna
         sub_linha, sub_coluna = ind_pos(posicao)
-
-        # Se não achar posição disponível
-        if sub_tabuleiro == None:
-            pass #toDo
 
         linha,coluna = ind_pos(id)
 

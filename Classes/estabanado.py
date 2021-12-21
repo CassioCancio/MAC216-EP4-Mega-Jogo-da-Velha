@@ -34,10 +34,6 @@ class Estabanado(Jogador):
                 break
             posicoes[i], posicoes[indice] = posicoes[indice], posicoes[i]
 
-        # Se não achar posição disponível
-        if sub_tabuleiro == None:
-            pass #toDo
-
         # Retorna o subtabuleiro escolhido e a posição escolhida para a jogada
         print(f"{linha} {coluna} {sub_linha} {sub_coluna}")
         return linha, coluna, sub_linha, sub_coluna

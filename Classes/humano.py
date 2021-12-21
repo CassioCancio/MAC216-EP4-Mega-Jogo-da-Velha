@@ -1,5 +1,6 @@
 from jogador import Jogador
 from mega_tabuleiro import MegaTabuleiro
+from Modulos.auxiliar import pos_ind
 
 class Humano(Jogador):
     def __init__(self, nome, simbolo):
@@ -16,7 +17,8 @@ class Humano(Jogador):
             tabuleiro_coluna = int(input("Digite a coluna do tabuleiro: "))
 
         # Verifica se a posição do subtabuleiro escolhido é válida
-        sub_tabuleiro = tabuleiro.posicoes[tabuleiro_linha*3+tabuleiro_coluna]
+        indice = pos_ind(tabuleiro_linha, tabuleiro_coluna)
+        sub_tabuleiro = tabuleiro.posicoes[indice]
         print("• Escolha da posição no subtabuleiro")
         sub_linha = int(input("Digite a linha do subtabuleiro: "))
         sub_coluna = int(input("Digite a coluna do subtabuleiro: "))
@@ -24,10 +26,6 @@ class Humano(Jogador):
             print("Posição inválida.")
             sub_linha = int(input("Digite a linha do subtabuleiro: "))
             sub_coluna = int(input("Digite a coluna do subtabuleiro: "))
-
-        # Se não achar posição disponível
-        if sub_tabuleiro == None:
-            pass # toDo
 
         # Retorna o subtabuleiro escolhido e a posição escolhida para a jogada
         return tabuleiro_linha, tabuleiro_coluna, sub_linha, sub_coluna
