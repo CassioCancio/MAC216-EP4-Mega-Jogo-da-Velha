@@ -6,7 +6,7 @@ class Aleatoria(Partida):
 
     def fazer_jogada(self):
         atual = randint(0,1)
-        print(f"Pelo sorteio, é a vez de {self.receber_nome_jogador(atual)}")
+        print(f"Pelo sorteio, é a vez de {self.receber_nome_jogador(atual)} ({self.receber_simbolo_jogador(atual)})")
         self.jogadores[atual].preparar_jogada(self.tabuleiro)
         id_jogador = self.tabuleiro.receber_vencedor()
         if id_jogador != None: self.finalizar()

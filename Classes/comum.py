@@ -10,7 +10,7 @@ class Comum(Partida):
     def fazer_jogada(self):
         atual = self.proximo_a_jogar
         self.proximo_a_jogar = 1 if atual == 0 else 0
-        print(f"É a vez de {self.receber_nome_jogador(atual)}")
+        print(f"É a vez de {self.receber_nome_jogador(atual)} ({self.receber_simbolo_jogador(atual)})")
         linha,coluna,sub_linha,sub_coluna = self.jogadores[atual].preparar_jogada(self.tabuleiro)
         
         while not(self.tabuleiro.definir_sub_posicao(linha, coluna, sub_linha, sub_coluna, atual)):

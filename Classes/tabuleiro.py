@@ -72,7 +72,7 @@ class Tabuleiro:
         # verificar diagonal secundaria
         jogador_1 = 0
         jogador_2 = 0
-        for i in range(0, 3):
+        for i in range(1, 4):
             if self.posicoes[pos_ind(i,-i)] == 0:
                 jogador_1 += 1
             elif self.posicoes[pos_ind(i,-i)] == 1:
