@@ -1,6 +1,7 @@
 from random import randint
 from jogador import Jogador
 from mega_tabuleiro import MegaTabuleiro
+from Modulos.auxiliar import ind_pos
 
 class Estabanado(Jogador):
     def __init__(self, nome, simbolo):
@@ -14,8 +15,7 @@ class Estabanado(Jogador):
         coluna = None
         for i in range(9):
             indice = randint(i, 8)
-            coluna = indice % 3
-            linha = (indice - coluna) // 3
+            linha, coluna = ind_pos(indice)
             if(tabuleiro.verificar_posicao(linha, coluna)):
                 sub_tabuleiro = tabuleiro.posicoes[indice]
                 break
@@ -28,15 +28,10 @@ class Estabanado(Jogador):
         sub_coluna = None
         for i in range(9):
             indice = randint(i, 8)
-            sub_coluna = indice % 3
-            sub_linha = (indice - coluna) // 3
+            sub_linha, sub_coluna = ind_pos(indice)
             if(sub_tabuleiro.verificar_posicao(sub_coluna, sub_linha)):
                 break
             posicoes[i], posicoes[indice] = posicoes[indice], posicoes[i]
-
-        # Se não achar posição disponível
-        if sub_tabuleiro == None:
-            pass #toDo
 
         # Retorna o subtabuleiro escolhido e a posição escolhida para a jogada
         return linha, coluna, sub_linha, sub_coluna
