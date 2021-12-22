@@ -21,19 +21,29 @@ class Partida:
 
 
     def fazer_jogada(self) -> None:
+        ''' Chama a função de jogada do jogador da rodada e executa sua jogada no tabuleiro '''
+        # Receb o id do próximo jogador
         atual = self.proximo_jogador()
+
         print(f"É a vez de {self.receber_nome_jogador(atual)} ({self.receber_simbolo_jogador(atual)})")
+        
+        # Recebe as coordenadas da jogada
         linha,coluna,sub_linha,sub_coluna = self.receber_jogador(atual).preparar_jogada(self.receber_tabuleiro())
+
         while not(self.receber_tabuleiro().definir_sub_posicao(linha, coluna, sub_linha, sub_coluna, atual)):
             linha,coluna,sub_linha,sub_coluna = self.receber_jogador(atual).preparar_jogada(self.receber_tabuleiro())
+        
+        # Verifica se houve vencedor no mega tabuleiro
         if self.receber_tabuleiro().receber_vencedor() != None: self.finalizar()
 
 
     def finalizar(self) -> None:
+        ''' Muda para finalizado o estado da partida '''
         self.emAndamento = False
 
 
     def imprimir_estado(self) -> None:
+        ''' Imprime o tabuleiro '''
         simbolos = []
         simbolos.append(self.receber_simbolo_jogador(0))
         simbolos.append(self.receber_simbolo_jogador(1))
@@ -73,30 +83,37 @@ class Partida:
 
 
     def receber_andamento(self) -> bool:
+        ''' Retorna se a partida ainda não acabou '''
         return self.emAndamento
 
 
     def receber_jogador(self, id) -> Jogador:
+        ''' Retorna o jogador correspondente ao id dado '''
         if id != None and 0 <= id <= 1: return self.jogadores[id]
 
 
     def receber_nome_jogador(self, id) -> str:
+        ''' Retorna o nome do jogador correspondente ao id dado '''
         return self.jogadores[id].receber_nome()
 
 
     def receber_simbolo_jogador(self, id) -> str:
+        ''' Retorna o símbolo do jogador correspondente ao id dado'''
         return self.jogadores[id].receber_simbolo()
 
 
     def receber_tabuleiro(self) -> MegaTabuleiro:
+        ''' Retorna o mega tabuleiro da partida '''
         return self.tabuleiro
 
 
     def receber_vencedor(self) -> Jogador:
+        ''' Retorna o jogador que venceu no mega tabuleiro'''
         return self.receber_jogador(self.receber_tabuleiro().receber_vencedor())
 
 
     def seletor_jogador(self, tipo: int, id: int, simbolo: str) -> Jogador:
+        ''' Retorna um jogador de acordo com o número dado na variável tipo'''
         if tipo == 1: return Humano(f"Humano {id}", simbolo)
         if tipo == 2: return Estabanado(f"Estabanado {id}", simbolo)
         if tipo == 3: return ComeCru(f"Come cru {id}", simbolo)

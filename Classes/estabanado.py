@@ -9,6 +9,7 @@ class Estabanado(Jogador):
 
 
     def preparar_jogada(self, tabuleiro: MegaTabuleiro) -> tuple():
+        ''' Busca o aleatóriamente um tabuleiro livre e depois sorteia uma posição livre dentro dele para então retornar as coordenadas dessa posição '''
         # Sorteando tabuleiro livre
         sub_indices = list(range(9))
         linha = coluna = None

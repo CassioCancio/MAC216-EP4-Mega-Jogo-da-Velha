@@ -10,6 +10,8 @@ class SubTabuleiro(Tabuleiro):
 
 
     def verificar_posicao(self, linha: int, coluna: int) -> bool:
+        ''' Verifica se a posição dada está disponível para ser marcada '''
+        # Verifica se os números estão dentro dos limites exigidos
         if self.limites(linha,coluna):
             posicao = self.receber_posicao(linha,coluna)
             if posicao == None or posicao == -1: return True

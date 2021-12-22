@@ -10,6 +10,11 @@ class Comum(Partida):
 
 
     def proximo_jogador(self) -> int:
+        ''' Envia o id que representa qual o próximo jogador, respeitando uma rodada para cada jogador '''
+        # Pega o id atual
         atual = self.proximo
+
+        # Troca para o outro valor
         self.proximo = 1 if self.proximo == 0 else 0
+
         return atual
