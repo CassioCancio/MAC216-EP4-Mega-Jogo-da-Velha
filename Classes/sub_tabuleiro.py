@@ -8,6 +8,7 @@ class SubTabuleiro(Tabuleiro):
             linha, coluna = ind_pos(i)
             self.definir_posicao(linha, coluna, -1)
 
+
     def verificar_posicao(self, linha, coluna) -> bool:
         if self.limites(linha,coluna):
             posicao = self.receber_posicao(linha,coluna)

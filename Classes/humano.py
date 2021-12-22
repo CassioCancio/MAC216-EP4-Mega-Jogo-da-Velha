@@ -5,6 +5,7 @@ class Humano(Jogador):
     def __init__(self, nome, simbolo):
         Jogador.__init__(self, nome, simbolo)
 
+
     def preparar_jogada(self, tabuleiro: MegaTabuleiro):
         linha = coluna = None
         print("• Escolha do subtabuleiro")

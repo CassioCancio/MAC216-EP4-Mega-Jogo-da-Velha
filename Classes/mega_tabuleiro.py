@@ -10,11 +10,6 @@ class MegaTabuleiro(Tabuleiro):
             sub_tabuleiro = SubTabuleiro()
             self.definir_posicao(linha, coluna, sub_tabuleiro)
 
-    def verificar_posicao(self, linha, coluna):
-        if self.limites(linha,coluna):
-            posicao = self.receber_posicao(linha, coluna)
-            if type(posicao) != int: return True
-        return False
 
     def definir_sub_posicao(self, linha, coluna, sub_linha, sub_coluna, id):
         if self.ha_subtab(linha,coluna):
@@ -25,9 +20,17 @@ class MegaTabuleiro(Tabuleiro):
         print("Nessa posição não há um tabuleiro")
         return False
 
+
     def receber_sub_posicao(self, linha, coluna, sub_linha, sub_coluna):
         if self.limites(linha, coluna):
             if self.ha_subtab(linha,coluna):
                 return self.receber_posicao(linha,coluna).receber_posicao(sub_linha,sub_coluna)
             return self.receber_posicao(linha,coluna)
         return None
+
+
+    def verificar_posicao(self, linha, coluna):
+        if self.limites(linha,coluna):
+            posicao = self.receber_posicao(linha, coluna)
+            if type(posicao) != int: return True
+        return False
