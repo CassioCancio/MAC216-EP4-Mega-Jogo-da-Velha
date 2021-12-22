@@ -47,3 +47,5 @@ class IA(Jogador):
 
         # Se o adversário jogar nas diagonais 
             # #toDo
+
+        self.esperar()

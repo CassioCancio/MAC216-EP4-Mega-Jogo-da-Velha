@@ -13,12 +13,15 @@ class Jogador:
 
     
     def esperar(self) -> None:
+        ''' Faz com que os jogadores não humanos esperem para que o usuário possa ver as jogadas'''
         time.sleep(2)
 
 
     def receber_nome(self) -> str:
+        ''' Devolve o nome do jogador '''
         return self.nome_jogador
 
    
     def receber_simbolo(self) -> str:
+        ''' Devolve o símbolo do jogador '''
         return self.simbolo

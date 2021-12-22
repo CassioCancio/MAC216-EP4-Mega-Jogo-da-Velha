@@ -8,11 +8,13 @@ class ComeCru(Jogador):
 
 
     def preparar_jogada(self, tabuleiro: MegaTabuleiro) -> tuple():
+        ''' Busca o primeiro tabuleiro livre e depois a sua primeira posição livre para então retornar as coordenadas dessa posição '''
         # Encontrando primeiro tabuleiro livre
         for i in range(9):
             linha,coluna = ind_pos(i)
             if tabuleiro.ha_subtab(linha,coluna): break
 
+        # Guardar subtabuleiro selecionado
         sub_tabuleiro = tabuleiro.receber_posicao(linha,coluna)
 
         # Encontrando primeira posição do primeiro tabuleiro livre
