@@ -20,4 +20,7 @@ class TestaEstabanado():
     def test_estabanado_posicao_disponivel(self, estabanado, mega_tabuleiro):
         linha, coluna, sub_linha, sub_coluna = estabanado.preparar_jogada(mega_tabuleiro)
         assert mega_tabuleiro.receber_sub_posicao(linha, coluna, sub_linha, sub_coluna) == -1
-        
+    
+
+
+

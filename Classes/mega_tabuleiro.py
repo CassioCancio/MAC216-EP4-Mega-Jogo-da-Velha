@@ -26,6 +26,8 @@ class MegaTabuleiro(Tabuleiro):
         return False
 
     def receber_sub_posicao(self, linha, coluna, sub_linha, sub_coluna):
-        if self.ha_subtab(linha,coluna):
-            return self.receber_posicao(linha,coluna).receber_posicao(sub_linha,sub_coluna)
-        return self.receber_posicao(linha,coluna)
+        if self.limites(linha, coluna):
+            if self.ha_subtab(linha,coluna):
+                return self.receber_posicao(linha,coluna).receber_posicao(sub_linha,sub_coluna)
+            return self.receber_posicao(linha,coluna)
+        return None

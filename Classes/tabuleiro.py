@@ -59,7 +59,8 @@ class Tabuleiro:
         return False
 
     def receber_posicao(self, linha, coluna):
-        return self.posicoes[pos_ind(linha,coluna)]
+        if self.limites(linha, coluna):
+            return self.posicoes[pos_ind(linha,coluna)]
 
     def limites(self, linha, coluna):
         if type(linha) != int or type(linha) != int: return False

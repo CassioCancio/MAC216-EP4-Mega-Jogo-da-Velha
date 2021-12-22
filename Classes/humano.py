@@ -10,8 +10,8 @@ class Humano(Jogador):
         print("• Escolha do subtabuleiro")
         while(not tabuleiro.verificar_posicao(linha, coluna)):
             if linha != None: print("Tabuleiro inválido.")
-            linha = int(input("Digite a linha do tabuleiro: "))
-            coluna = int(input("Digite a coluna do tabuleiro: "))
+            linha = int(input("Linha (1-3): ")) - 1
+            coluna = int(input("Coluna (1-3): ")) - 1
 
         # Verifica se a posição do subtabuleiro escolhido é válida
         sub_tabuleiro = tabuleiro.receber_posicao(linha,coluna)
@@ -20,8 +20,8 @@ class Humano(Jogador):
         print("• Escolha da posição no subtabuleiro")
         while(not sub_tabuleiro.verificar_posicao(sub_linha, sub_coluna)):
             if sub_linha != None: print("Tabuleiro inválido.")
-            sub_linha = int(input("Digite a linha do subtabuleiro: "))
-            sub_coluna = int(input("Digite a coluna do subtabuleiro: "))
+            sub_linha = int(input("Linha (1-3): ")) - 1
+            sub_coluna = int(input("Coluna (1-3): ")) - 1
 
         # Retorna o subtabuleiro escolhido e a posição escolhida para a jogada
         return linha, coluna, sub_linha, sub_coluna
