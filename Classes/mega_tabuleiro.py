@@ -35,13 +35,19 @@ class MegaTabuleiro(Tabuleiro):
             if type(posicao) != int: return True
         return False
 
-    def conta_jogadas(self, id, linha, coluna):
+    def conta_jogadas(self, linha, coluna, id):
         contador_um = 0
         contador_dois = 0
+
         for i in range(0, 3):
             for j in range(0, 3):
-                if(self.receber_sub_posicao(linha, coluna, i, j) == id):
+                celula = self.receber_sub_posicao(linha, coluna, i, j)
+                if(celula == id):
                     contador_um += 1
-                elif(self.receber_sub_posicao(linha, coluna, i, j) != -1):
+                elif(celula != -1):
                     contador_dois += 1
-        return contador_um < contador_dois
+
+        if(contador_um < contador_dois):
+            return True
+        else:
+            return False

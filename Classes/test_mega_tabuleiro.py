@@ -86,5 +86,5 @@ class TestaMegaTabuleiro():
         assert mega_tabuleiro.conta_jogadas(1, 0, 0) == False
         
     def teste_conta_jogadas_maior(self, mega_tabuleiro):
-        mega_tabuleiro.definir_sub_posicao(0, 0, 0, 0, 2)
-        assert mega_tabuleiro.conta_jogadas(1, 0, 0) == True
+        mega_tabuleiro.definir_sub_posicao(0, 0, 0, 0, 1)
+        assert mega_tabuleiro.conta_jogadas(0, 0, 0) == True
