@@ -1,5 +1,5 @@
 from tabuleiro import Tabuleiro
-from Modulos.auxiliar import pos_ind, ind_pos
+from Modulos.auxiliar import ind_pos
 
 class SubTabuleiro(Tabuleiro):
     def __init__(self):
@@ -9,7 +9,7 @@ class SubTabuleiro(Tabuleiro):
             self.definir_posicao(linha, coluna, -1)
 
 
-    def verificar_posicao(self, linha, coluna) -> bool:
+    def verificar_posicao(self, linha: int, coluna: int) -> bool:
         if self.limites(linha,coluna):
             posicao = self.receber_posicao(linha,coluna)
             if posicao == None or posicao == -1: return True

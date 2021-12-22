@@ -1,11 +1,10 @@
 from partida import Partida
-from Modulos.auxiliar import pos_ind, ind_pos
 
 import pytest
 @pytest.fixture
 
 def partida():
-    return Partida(2,0)
+    return Partida(3,1)
 
 class TestaPartida():
     def teste_receber_vencedor(self, partida):

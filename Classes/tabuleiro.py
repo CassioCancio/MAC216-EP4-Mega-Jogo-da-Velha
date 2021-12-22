@@ -22,34 +22,34 @@ class Tabuleiro:
         return False
 
 
-    def definir_posicao(self, linha, coluna, id):
+    def definir_posicao(self, linha: int, coluna: int, id: int) -> bool:
         if self.verificar_posicao(linha, coluna):
             self.posicoes[pos_ind(linha,coluna)] = id
             self.verificar_vencedor()
-            return
+            return True
         return False
 
 
-    def ha_subtab(self, linha, coluna):
+    def ha_subtab(self, linha: int, coluna: int) -> bool:
         return type(self.receber_posicao(linha, coluna)).__name__ == "SubTabuleiro"
 
 
-    def limites(self, linha, coluna):
+    def limites(self, linha: int, coluna: int) -> bool:
         if type(linha) != int or type(linha) != int: return False
         if not(0 <= linha <= 2 and 0 <= coluna <= 2): return False
         return True
 
 
-    def receber_posicao(self, linha, coluna):
+    def receber_posicao(self, linha: int, coluna: int) -> object:
         if self.limites(linha, coluna):
             return self.posicoes[pos_ind(linha,coluna)]
 
 
-    def receber_vencedor(self):
+    def receber_vencedor(self) -> int:
         return self.id_vencedor
 
 
-    def verificar_vencedor(self):
+    def verificar_vencedor(self) -> None:
         if self.id_vencedor != None: return
 
         # verificar linhas e colunas

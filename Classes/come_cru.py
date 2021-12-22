@@ -1,15 +1,13 @@
-from sub_tabuleiro import SubTabuleiro
 from jogador import Jogador
 from mega_tabuleiro import MegaTabuleiro
 from Modulos.auxiliar import ind_pos
-import time
 
 class ComeCru(Jogador):
-    def __init__(self, nome, simbolo):
+    def __init__(self, nome: str, simbolo: str):
         Jogador.__init__(self, nome, simbolo)
 
 
-    def preparar_jogada(self, tabuleiro: MegaTabuleiro):
+    def preparar_jogada(self, tabuleiro: MegaTabuleiro) -> tuple():
         # Encontrando primeiro tabuleiro livre
         for i in range(9):
             linha,coluna = ind_pos(i)

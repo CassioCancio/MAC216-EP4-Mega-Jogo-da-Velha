@@ -9,7 +9,7 @@ import pytest
 @pytest.fixture
 
 def comum():
-    return Comum(2,0)
+    return Comum(3,1)
 
 class TestaComum():
     def teste_proximo(self, comum):
@@ -21,18 +21,18 @@ class TestaComum():
         assert type(comum.receber_jogador(1)) == Humano
 
     def test_tipo_estabanado(self):
-        comum = Comum(1,1)
+        comum = Comum(2,2)
         assert type(comum.receber_jogador(0)) == Estabanado
     
     def test_tipo_come_cru(self,comum):
         assert type(comum.receber_jogador(0)) == ComeCru
     
     def test_tipo_ia(self):
-        comum = Comum(3,3)
+        comum = Comum(4,4)
         assert type(comum.receber_jogador(0)) == IA
 
     def test_id_jogador_invalido(self):
-        comum = Comum(4,4)
+        comum = Comum(5,5)
         assert comum.receber_jogador(0) == None
 
     def test_andamento(self,comum):

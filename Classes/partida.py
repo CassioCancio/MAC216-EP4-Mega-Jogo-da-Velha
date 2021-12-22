@@ -1,4 +1,5 @@
 from typing import List
+from jogador import Jogador
 from mega_tabuleiro import MegaTabuleiro
 from humano import Humano
 from estabanado import Estabanado
@@ -11,15 +12,15 @@ class Partida:
     tabuleiro: MegaTabuleiro
 
 
-    def __init__(self, jogador1, jogador2):
+    def __init__(self, tipo_jogador_1: int, tipo_jogador_2: int):
         self.emAndamento = True
         self.tabuleiro = MegaTabuleiro()
         self.jogadores = []
-        self.jogadores.append(self.seletor_jogador(jogador1, 1, 'x'))
-        self.jogadores.append(self.seletor_jogador(jogador2, 2, '○'))
+        self.jogadores.append(self.seletor_jogador(tipo_jogador_1, 1, 'x'))
+        self.jogadores.append(self.seletor_jogador(tipo_jogador_2, 2, '○'))
 
 
-    def fazer_jogada(self):
+    def fazer_jogada(self) -> None:
         atual = self.proximo_jogador()
         print(f"É a vez de {self.receber_nome_jogador(atual)} ({self.receber_simbolo_jogador(atual)})")
         linha,coluna,sub_linha,sub_coluna = self.receber_jogador(atual).preparar_jogada(self.receber_tabuleiro())
@@ -28,11 +29,11 @@ class Partida:
         if self.receber_tabuleiro().receber_vencedor() != None: self.finalizar()
 
 
-    def finalizar(self):
+    def finalizar(self) -> None:
         self.emAndamento = False
 
 
-    def imprimir_estado(self):
+    def imprimir_estado(self) -> None:
         simbolos = []
         simbolos.append(self.receber_simbolo_jogador(0))
         simbolos.append(self.receber_simbolo_jogador(1))
@@ -71,31 +72,31 @@ class Partida:
         print()
 
 
-    def receber_andamento(self):
+    def receber_andamento(self) -> bool:
         return self.emAndamento
 
 
-    def receber_jogador(self, id):
+    def receber_jogador(self, id) -> Jogador:
         if id != None and 0 <= id <= 1: return self.jogadores[id]
 
 
-    def receber_nome_jogador(self, id):
+    def receber_nome_jogador(self, id) -> str:
         return self.jogadores[id].receber_nome()
 
 
-    def receber_simbolo_jogador(self, id):
+    def receber_simbolo_jogador(self, id) -> str:
         return self.jogadores[id].receber_simbolo()
 
 
-    def receber_tabuleiro(self):
+    def receber_tabuleiro(self) -> MegaTabuleiro:
         return self.tabuleiro
 
 
-    def receber_vencedor(self):
+    def receber_vencedor(self) -> Jogador:
         return self.receber_jogador(self.receber_tabuleiro().receber_vencedor())
 
 
-    def seletor_jogador(self, tipo: int, id: int, simbolo: str):
+    def seletor_jogador(self, tipo: int, id: int, simbolo: str) -> Jogador:
         if tipo == 1: return Humano(f"Humano {id}", simbolo)
         if tipo == 2: return Estabanado(f"Estabanado {id}", simbolo)
         if tipo == 3: return ComeCru(f"Come cru {id}", simbolo)

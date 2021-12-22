@@ -26,7 +26,7 @@ Para facilitar o desenvolvimento do programa, primeiro foi criado um diagrama de
 
 ![Diagrama de classes](./documentacao/diagrama_de_classes.png)
 
-Os testes automatizados foram criados com pytest visando cobrir a maior quantidade de casos possíveis, assim, o programa teve 99% das linhas testadas, o que ajudou a encontrar e corrigir bugs logo no início. É possível rodar os testes automatizados  digitando *pytest* dentro da pasta do repositório no terminal de um sistema com essa biblioteca
+Os testes automatizados foram criados com pytest visando cobrir a maior quantidade de casos possíveis, assim, o programa teve 99% das linhas testadas, o que ajudou a encontrar e evitar bugs. É possível rodar os testes automatizados digitando *pytest* dentro da pasta do repositório no terminal de um sistema com essa biblioteca
 
 ### Uso do programa
 

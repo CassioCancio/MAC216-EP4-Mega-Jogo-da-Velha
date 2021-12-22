@@ -1,14 +1,14 @@
 from random import randint
 from jogador import Jogador
 from mega_tabuleiro import MegaTabuleiro
-from Modulos.auxiliar import pos_ind, ind_pos
+from Modulos.auxiliar import ind_pos
 
 class Estabanado(Jogador):
-    def __init__(self, nome, simbolo):
+    def __init__(self, nome: str, simbolo: str):
         Jogador.__init__(self, nome, simbolo)
 
 
-    def preparar_jogada(self, tabuleiro: MegaTabuleiro):
+    def preparar_jogada(self, tabuleiro: MegaTabuleiro) -> tuple():
         # Sorteando tabuleiro livre
         sub_indices = list(range(9))
         linha = coluna = None

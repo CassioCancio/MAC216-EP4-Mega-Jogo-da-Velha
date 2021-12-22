@@ -2,11 +2,11 @@ from jogador import Jogador
 from mega_tabuleiro import MegaTabuleiro
 
 class Humano(Jogador):
-    def __init__(self, nome, simbolo):
+    def __init__(self, nome: str, simbolo: str):
         Jogador.__init__(self, nome, simbolo)
 
 
-    def preparar_jogada(self, tabuleiro: MegaTabuleiro):
+    def preparar_jogada(self, tabuleiro: MegaTabuleiro) -> tuple():
         linha = coluna = None
         print("• Escolha do subtabuleiro")
         while(not tabuleiro.verificar_posicao(linha, coluna)):

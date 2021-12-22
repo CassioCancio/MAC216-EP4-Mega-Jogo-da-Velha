@@ -7,18 +7,18 @@ class Jogador:
     simbolo: str
 
 
-    def __init__(self, nome_jogador, simbolo):
+    def __init__(self, nome_jogador: str, simbolo: str):
         self.nome_jogador = nome_jogador
         self.simbolo = simbolo
 
     
-    def esperar(self):
+    def esperar(self) -> None:
         time.sleep(2)
 
 
-    def receber_nome(self):
+    def receber_nome(self) -> str:
         return self.nome_jogador
 
    
-    def receber_simbolo(self):
+    def receber_simbolo(self) -> str:
         return self.simbolo

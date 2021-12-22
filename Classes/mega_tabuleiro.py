@@ -1,6 +1,6 @@
 from tabuleiro import Tabuleiro
 from sub_tabuleiro import SubTabuleiro
-from Modulos.auxiliar import pos_ind, ind_pos
+from Modulos.auxiliar import ind_pos
 
 class MegaTabuleiro(Tabuleiro):
     def __init__(self):
@@ -11,7 +11,7 @@ class MegaTabuleiro(Tabuleiro):
             self.definir_posicao(linha, coluna, sub_tabuleiro)
 
 
-    def definir_sub_posicao(self, linha, coluna, sub_linha, sub_coluna, id):
+    def definir_sub_posicao(self, linha: int, coluna: int, sub_linha: int, sub_coluna: int, id: int) -> bool:
         if self.ha_subtab(linha,coluna):
             sub_tab = self.receber_posicao(linha, coluna)
             sub_tab.definir_posicao(sub_linha, sub_coluna, id)
@@ -21,7 +21,7 @@ class MegaTabuleiro(Tabuleiro):
         return False
 
 
-    def receber_sub_posicao(self, linha, coluna, sub_linha, sub_coluna):
+    def receber_sub_posicao(self, linha: int, coluna: int, sub_linha: int, sub_coluna: int) -> int:
         if self.limites(linha, coluna):
             if self.ha_subtab(linha,coluna):
                 return self.receber_posicao(linha,coluna).receber_posicao(sub_linha,sub_coluna)
@@ -29,7 +29,7 @@ class MegaTabuleiro(Tabuleiro):
         return None
 
 
-    def verificar_posicao(self, linha, coluna):
+    def verificar_posicao(self, linha: int, coluna: int) -> bool:
         if self.limites(linha,coluna):
             posicao = self.receber_posicao(linha, coluna)
             if type(posicao) != int: return True
