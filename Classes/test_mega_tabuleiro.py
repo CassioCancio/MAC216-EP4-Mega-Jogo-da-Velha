@@ -75,3 +75,16 @@ class TestaMegaTabuleiro():
         mega_tabuleiro.definir_posicao(2,1,1)
         mega_tabuleiro.definir_posicao(2,2,1)
         assert mega_tabuleiro.receber_vencedor() == 2
+
+    def teste_conta_jogadas_iguais(self, mega_tabuleiro):
+        mega_tabuleiro.definir_sub_posicao(0, 0, 0, 0, 1)
+        mega_tabuleiro.definir_sub_posicao(0, 0, 0, 1, 2)
+        assert mega_tabuleiro.conta_jogadas(1, 0, 0) == False
+
+    def teste_conta_jogadas_maior(self, mega_tabuleiro):
+        mega_tabuleiro.definir_sub_posicao(0, 0, 0, 0, 1)
+        assert mega_tabuleiro.conta_jogadas(1, 0, 0) == False
+        
+    def teste_conta_jogadas_maior(self, mega_tabuleiro):
+        mega_tabuleiro.definir_sub_posicao(0, 0, 0, 0, 2)
+        assert mega_tabuleiro.conta_jogadas(1, 0, 0) == True

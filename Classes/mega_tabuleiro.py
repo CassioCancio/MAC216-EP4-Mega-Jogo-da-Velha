@@ -34,3 +34,14 @@ class MegaTabuleiro(Tabuleiro):
             posicao = self.receber_posicao(linha, coluna)
             if type(posicao) != int: return True
         return False
+
+    def conta_jogadas(self, id, linha, coluna):
+        contador_um = 0
+        contador_dois = 0
+        for i in range(0, 3):
+            for j in range(0, 3):
+                if(self.receber_sub_posicao(linha, coluna, i, j) == id):
+                    contador_um += 1
+                elif(self.receber_sub_posicao(linha, coluna, i, j) != -1):
+                    contador_dois += 1
+        return contador_um < contador_dois
