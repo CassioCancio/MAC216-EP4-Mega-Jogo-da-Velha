@@ -16,10 +16,15 @@ Para ganhar o jogo, o jogador precisa ganhar 3 subtabuleiros que formem uma linh
 Além disso, existem 4 tipos de jogadores:
 
 * Come cru - o computador joga sempre na casa primeira casa vazia do primeiro subtabuleiro disponível;
-* Estabanado - o computador sorteia uma posição e a marca
+* Estabanado - o computador sorteia uma posição e a marca;
 * Humano - para que uma pessoa possa digitar as posições a serem marcadas;
-* IA - o computador escolhe uma posição intencionalmente para tentar vencer o jogo;
+* IA - primeiramente o computador escolhe o subtabuleiro onde o jogador em questão possui menos jogadas que seu adversário, se esse tabuleiro não for encontrado, seleciona o primeiro disponível. Depois disso o algoritmo segue as seguintes regras, respectivamente
+  1) Se a posição central estiver livre, jogue nela.
+  2) Se o inimigo marcou alguma posição de canto central, ou seja, norte, sul, leste, oeste, jogue nas diagonais
+  3) Se não achar posição de canto central marcada, seleciona alguma posição aleatória.
 
+### Gráfico de comparação IA x Estabanado
+![Grafico IA x Estabanado](./documentacao/grafico_IA.png)
 
 ### Organização, classes e testes
 Para facilitar o desenvolvimento do programa, primeiro foi criado um diagrama de classes para representar os atributos e métodos que cada classe precisaria ter. O diagrama está na imagem a seguir:
